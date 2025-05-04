@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Disaster Management System</h1>
+            <p id="current-date"></p>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="report-incident.html"><i class="fas fa-exclamation-triangle"></i> Report Incident</a></li>
+                    <li><a href="relief-camp.html"><i class="fas fa-campground"></i> Relief Camps</a></li>
+                    <li><a href="donors.html"><i class="fas fa-hand-holding-heart"></i> Donors</a></li>
+                    <li><a href="requests.html"><i class="fas fa-hands-helping"></i> Requests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard-overview">
+            <h2 class="section-title">System Overview</h2>
+            <div class="dashboard">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-value" id="incident-count">0</div>
+                    <div class="stat-label">Active Incidents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-campground"></i>
+                    </div>
+                    <div class="stat-value" id="camp-count">0</div>
+                    <div class="stat-label">Relief Camps</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="stat-value" id="donor-count">0</div>
+                    <div class="stat-label">Registered Donors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="stat-value" id="request-count">0</div>
+                    <div class="stat-label">Pending Requests</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Charts Section -->
+        <section class="dashboard-visualization">
+            <h2 class="section-title">Analytics & Insights</h2>
+            <div class="dashboard-charts">
+                <div class="chart-container">
+                    <canvas id="incidentChart"></canvas>
+                    <div class="chart-loader">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="resourceChart"></canvas>
+                    <div class="chart-loader">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2 class="section-title">Recent Activity</h2>
+            <div class="table-container">
+                <table id="activity-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Activity Type</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Activity data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Disaster Management System</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

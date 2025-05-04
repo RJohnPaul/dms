@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relief Camps - Incident Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50x50?text=IMS'">
+                <h2>IMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="report-incident.html"><i class="fas fa-exclamation-triangle"></i> Report Incident</a></li>
+                <li class="active"><a href="relief-camp.html"><i class="fas fa-campground"></i> Relief Camps</a></li>
+                <li><a href="donors.html"><i class="fas fa-hand-holding-heart"></i> Donors</a></li>
+                <li><a href="requests.html"><i class="fas fa-clipboard-list"></i> Requests</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="images/user.png" alt="User" onerror="this.src='https://via.placeholder.com/40x40?text=User'">
+                <div>
+                    <h4>Alice Johnson</h4>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <header>
+                <div class="header-content">
+                    <h1>Relief Camps</h1>
+                    <div class="date-time">
+                        <p id="current-date"></p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search camps...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon blue">
+                        <i class="fas fa-campground"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Camps</h3>
+                        <h2>6</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Capacity</h3>
+                        <h2>6000</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon orange">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Occupied Slots</h3>
+                        <h2>3000</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Occupancy Rate</h3>
+                        <h2>50%</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="camps-container">
+                <div class="section-header">
+                    <h2>Active Relief Camps</h2>
+                    <button class="btn-primary" id="add-camp-btn"><i class="fas fa-plus"></i> Add New Camp</button>
+                </div>
+                <div class="camps-grid">
+                    <div class="camp-card">
+                        <div class="camp-header">
+                            <h3>Camp Alpha</h3>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> New York</span>
+                        </div>
+                        <div class="camp-stats">
+                            <div class="stat">
+                                <span class="label">Capacity</span>
+                                <span class="value">1000</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupied</span>
+                                <span class="value">500</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupancy</span>
+                                <span class="value">50%</span>
+                            </div>
+                        </div>
+                        <div class="camp-resources">
+                            <h4>Resources Status</h4>
+                            <div class="resource-bars">
+                                <div class="resource">
+                                    <span>Food</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Water</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Medical</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camp-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-request">Make Request</button>
+                        </div>
+                    </div>
+
+                    <div class="camp-card">
+                        <div class="camp-header">
+                            <h3>Camp Beta</h3>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Los Angeles</span>
+                        </div>
+                        <div class="camp-stats">
+                            <div class="stat">
+                                <span class="label">Capacity</span>
+                                <span class="value">800</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupied</span>
+                                <span class="value">300</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupancy</span>
+                                <span class="value">38%</span>
+                            </div>
+                        </div>
+                        <div class="camp-resources">
+                            <h4>Resources Status</h4>
+                            <div class="resource-bars">
+                                <div class="resource">
+                                    <span>Food</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Water</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Medical</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camp-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-request">Make Request</button>
+                        </div>
+                    </div>
+
+                    <div class="camp-card">
+                        <div class="camp-header">
+                            <h3>Camp Gamma</h3>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Houston</span>
+                        </div>
+                        <div class="camp-stats">
+                            <div class="stat">
+                                <span class="label">Capacity</span>
+                                <span class="value">1200</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupied</span>
+                                <span class="value">700</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Occupancy</span>
+                                <span class="value">58%</span>
+                            </div>
+                        </div>
+                        <div class="camp-resources">
+                            <h4>Resources Status</h4>
+                            <div class="resource-bars">
+                                <div class="resource">
+                                    <span>Food</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Water</span>
+                                    <div class="progress-bar">
+                                        <div class="progress warning" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+                                <div class="resource">
+                                    <span>Medical</span>
+                                    <div class="progress-bar">
+                                        <div class="progress danger" style="width: 15%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camp-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-request">Make Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pending-requests">
+                <h2>Pending Resource Requests</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Camp</th>
+                                <th>Resource</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Camp Alpha</td>
+                                <td>Bottled Water</td>
+                                <td>100</td>
+                                <td><span class="status-fulfilled">Fulfilled</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Camp Beta</td>
+                                <td>First Aid Kits</td>
+                                <td>50</td>
+                                <td><span class="status-fulfilled">Fulfilled</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Camp Gamma</td>
+                                <td>Blankets</td>
+                                <td>75</td>
+                                <td><span class="status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-approve sm">Approve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Camp Gamma</td>
+                                <td>Medical Supplies</td>
+                                <td>30</td>
+                                <td><span class="status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-approve sm">Approve</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Camp Modal -->
+    <div class="modal" id="camp-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Relief Camp</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="camp-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="camp-name">Camp Name</label>
+                            <input type="text" id="camp-name" name="camp-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="camp-location">Location</label>
+                            <input type="text" id="camp-location" name="camp-location" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="camp-capacity">Capacity</label>
+                            <input type="number" id="camp-capacity" name="camp-capacity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="camp-occupied">Initial Occupied Slots</label>
+                            <input type="number" id="camp-occupied" name="camp-occupied" min="0" value="0" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-camp">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Camp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

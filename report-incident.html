@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Incident - Incident Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50x50?text=IMS'">
+                <h2>IMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="active"><a href="report-incident.html"><i class="fas fa-exclamation-triangle"></i> Report Incident</a></li>
+                <li><a href="relief-camp.html"><i class="fas fa-campground"></i> Relief Camps</a></li>
+                <li><a href="donors.html"><i class="fas fa-hand-holding-heart"></i> Donors</a></li>
+                <li><a href="requests.html"><i class="fas fa-clipboard-list"></i> Requests</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="images/user.png" alt="User" onerror="this.src='https://via.placeholder.com/40x40?text=User'">
+                <div>
+                    <h4>Alice Johnson</h4>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <header>
+                <div class="header-content">
+                    <h1>Report Incident</h1>
+                    <div class="date-time">
+                        <p id="current-date"></p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>New Incident Report</h2>
+                    <p>Fill out the form below to report a new incident</p>
+                </div>
+                <form id="incident-form" class="incident-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="incident-type">Incident Type</label>
+                            <select id="incident-type" name="incident-type" required>
+                                <option value="">Select incident type</option>
+                                <option value="flooding">Flooding</option>
+                                <option value="fire">Fire</option>
+                                <option value="medical">Medical Emergency</option>
+                                <option value="supplies">Supply Shortage</option>
+                                <option value="security">Security Issue</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="camp-id">Camp Location</label>
+                            <select id="camp-id" name="camp-id" required>
+                                <option value="">Select camp</option>
+                                <option value="1">Camp Alpha - New York</option>
+                                <option value="2">Camp Beta - Los Angeles</option>
+                                <option value="3">Camp Gamma - Houston</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="severity">Severity Level</label>
+                            <select id="severity" name="severity" required>
+                                <option value="">Select severity</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reported-by">Reported By</label>
+                            <select id="reported-by" name="reported-by" required>
+                                <option value="">Select reporter</option>
+                                <option value="1">Alice Johnson - Admin</option>
+                                <option value="2">Bob Smith - Volunteer</option>
+                                <option value="4">David Wilson - User</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="5" placeholder="Provide detailed description of the incident..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="needs-medical">Needs Medical Assistance</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="needs-medical" value="yes"> Yes
+                                </label>
+                                <label>
+                                    <input type="radio" name="needs-medical" value="no" checked> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="needs-evacuation">Needs Evacuation</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="needs-evacuation" value="yes"> Yes
+                                </label>
+                                <label>
+                                    <input type="radio" name="needs-evacuation" value="no" checked> No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="photo">Upload Images (Optional)</label>
+                        <input type="file" id="photo" name="photo" accept="image/*" multiple>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="reset" class="btn-secondary">Reset</button>
+                        <button type="submit" class="btn-primary">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="recent-incidents">
+                <h2>Recent Incidents</h2>
+                <div class="incidents-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>Camp</th>
+                                <th>Severity</th>
+                                <th>Reported By</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Flooding in the camp area</td>
+                                <td>Camp Alpha</td>
+                                <td><span class="status-high">High</span></td>
+                                <td>Alice Johnson</td>
+                                <td>In Progress</td>
+                                <td><button class="btn-view">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Shortage of medical supplies</td>
+                                <td>Camp Beta</td>
+                                <td><span class="status-medium">Medium</span></td>
+                                <td>Bob Smith</td>
+                                <td>Assigned</td>
+                                <td><button class="btn-view">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Minor fire outbreak in the kitchen</td>
+                                <td>Camp Gamma</td>
+                                <td><span class="status-low">Low</span></td>
+                                <td>Charlie Davis</td>
+                                <td>Resolved</td>
+                                <td><button class="btn-view">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

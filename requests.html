@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests - Incident Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50x50?text=IMS'">
+                <h2>IMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="report-incident.html"><i class="fas fa-exclamation-triangle"></i> Report Incident</a></li>
+                <li><a href="relief-camp.html"><i class="fas fa-campground"></i> Relief Camps</a></li>
+                <li><a href="donors.html"><i class="fas fa-hand-holding-heart"></i> Donors</a></li>
+                <li class="active"><a href="requests.html"><i class="fas fa-clipboard-list"></i> Requests</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="images/user.png" alt="User" onerror="this.src='https://via.placeholder.com/40x40?text=User'">
+                <div>
+                    <h4>Alice Johnson</h4>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <header>
+                <div class="header-content">
+                    <h1>Manage Requests</h1>
+                    <div class="date-time">
+                        <p id="current-date"></p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search requests...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon blue">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Requests</h3>
+                        <h2>4</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Fulfilled</h3>
+                        <h2>2</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Pending</h3>
+                        <h2>2</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Available Vehicles</h3>
+                        <h2>1</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requests-container">
+                <div class="section-header">
+                    <h2>All Requests</h2>
+                    <button class="btn-primary" id="add-request-btn"><i class="fas fa-plus"></i> New Request</button>
+                </div>
+                
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="filter-status">Status:</label>
+                        <select id="filter-status">
+                            <option value="all">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="fulfilled">Fulfilled</option>
+                            <option value="transit">In Transit</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-camp">Camp:</label>
+                        <select id="filter-camp">
+                            <option value="all">All</option>
+                            <option value="1">Camp Alpha</option>
+                            <option value="2">Camp Beta</option>
+                            <option value="3">Camp Gamma</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-resource">Resource Type:</label>
+                        <select id="filter-resource">
+                            <option value="all">All</option>
+                            <option value="1">Food & Water</option>
+                            <option value="2">Medical</option>
+                            <option value="3">Non-Food Items</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary btn-sm">Apply Filters</button>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Camp</th>
+                                <th>Resource</th>
+                                <th>Quantity</th>
+                                <th>Date Requested</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Camp Alpha</td>
+                                <td>Bottled Water</td>
+                                <td>100</td>
+                                <td>2025-03-01</td>
+                                <td><span class="status-fulfilled">Fulfilled</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Camp Beta</td>
+                                <td>First Aid Kits</td>
+                                <td>50</td>
+                                <td>2025-03-02</td>
+                                <td><span class="status-fulfilled">Fulfilled</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Camp Gamma</td>
+                                <td>Blankets</td>
+                                <td>75</td>
+                                <td>2025-03-08</td>
+                                <td><span class="status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-approve sm">Approve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Camp Gamma</td>
+                                <td>Medical Supplies</td>
+                                <td>30</td>
+                                <td>2025-03-09</td>
+                                <td><span class="status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-approve sm">Approve</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="transport-section">
+                <div class="section-header">
+                    <h2>Transport Vehicles</h2>
+                </div>
+                <div class="vehicle-cards">
+                    <div class="vehicle-card">
+                        <div class="vehicle-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="vehicle-details">
+                            <h3>Truck</h3>
+                            <p>ID: 1</p>
+                            <p>Capacity: 1000 kg</p>
+                            <p>Drivers: John Doe, Jane Doe</p>
+                            <span class="vehicle-status available">Available</span>
+                        </div>
+                        <div class="vehicle-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-assign">Assign</button>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-card">
+                        <div class="vehicle-icon">
+                            <i class="fas fa-shuttle-van"></i>
+                        </div>
+                        <div class="vehicle-details">
+                            <h3>Van</h3>
+                            <p>ID: 2</p>
+                            <p>Capacity: 500 kg</p>
+                            <p>Driver: Mike Ross</p>
+                            <span class="vehicle-status in-use">In Use</span>
+                        </div>
+                        <div class="vehicle-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-assign" disabled>Assign</button>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-card">
+                        <div class="vehicle-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <div class="vehicle-details">
+                            <h3>Ambulance</h3>
+                            <p>ID: 3</p>
+                            <p>Capacity: 300 kg</p>
+                            <p>Driver: Sarah Connor</p>
+                            <span class="vehicle-status maintenance">Under Maintenance</span>
+                        </div>
+                        <div class="vehicle-actions">
+                            <button class="btn-view">View Details</button>
+                            <button class="btn-assign" disabled>Assign</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Request Modal -->
+    <div class="modal" id="request-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Request</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="request-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="request-camp">Relief Camp</label>
+                            <select id="request-camp" name="request-camp" required>
+                                <option value="">Select camp</option>
+                                <option value="1">Camp Alpha - New York</option>
+                                <option value="2">Camp Beta - Los Angeles</option>
+                                <option value="3">Camp Gamma - Houston</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="request-resource">Resource</label>
+                            <select id="request-resource" name="request-resource" required>
+                                <option value="">Select resource</option>
+                                <option value="1">Bottled Water</option>
+                                <option value="2">Blankets</option>
+                                <option value="3">First Aid Kits</option>
+                                <option value="4">Canned Food</option>
+                                <option value="5">Tents</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="request-quantity">Quantity Needed</label>
+                            <input type="number" id="request-quantity" name="request-quantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="request-priority">Priority</label>
+                            <select id="request-priority" name="request-priority" required>
+                                <option value="">Select priority</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="request-notes">Additional Notes</label>
+                        <textarea id="request-notes" name="request-notes" rows="3" placeholder="Add any additional details..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-request">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

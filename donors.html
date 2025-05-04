@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donors - Incident Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50x50?text=IMS'">
+                <h2>IMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="report-incident.html"><i class="fas fa-exclamation-triangle"></i> Report Incident</a></li>
+                <li><a href="relief-camp.html"><i class="fas fa-campground"></i> Relief Camps</a></li>
+                <li class="active"><a href="donors.html"><i class="fas fa-hand-holding-heart"></i> Donors</a></li>
+                <li><a href="requests.html"><i class="fas fa-clipboard-list"></i> Requests</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="images/user.png" alt="User" onerror="this.src='https://via.placeholder.com/40x40?text=User'">
+                <div>
+                    <h4>Alice Johnson</h4>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <header>
+                <div class="header-content">
+                    <h1>Donors Management</h1>
+                    <div class="date-time">
+                        <p id="current-date"></p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search donors...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon blue">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Donors</h3>
+                        <h2>4</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">
+                        <i class="fas fa-medkit"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Medical Supplies</h3>
+                        <h2>2</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon orange">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Food</h3>
+                        <h2>1</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Clothing</h3>
+                        <h2>1</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="donor-container">
+                <div class="section-header">
+                    <h2>Registered Donors</h2>
+                    <button class="btn-primary" id="add-donor-btn"><i class="fas fa-plus"></i> Add New Donor</button>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Donor ID</th>
+                                <th>Name</th>
+                                <th>Contact Info</th>
+                                <th>Donation Type</th>
+                                <th>Donation Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Henry White</td>
+                                <td>henry@example.com</td>
+                                <td>Medical Supplies</td>
+                                <td>2025-03-01</td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-edit sm">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Ivy Green</td>
+                                <td>ivy@example.com</td>
+                                <td>Food</td>
+                                <td>2025-02-25</td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-edit sm">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Jack Black</td>
+                                <td>jack@example.com</td>
+                                <td>Clothing</td>
+                                <td>2025-02-28</td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-edit sm">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Eve Miller</td>
+                                <td>eve@example.com</td>
+                                <td>Medical Supplies</td>
+                                <td>2025-03-05</td>
+                                <td>
+                                    <button class="btn-view sm">View</button>
+                                    <button class="btn-edit sm">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="donation-history">
+                <div class="section-header">
+                    <h2>Recent Donations</h2>
+                </div>
+                <div class="donation-cards">
+                    <div class="donation-card">
+                        <div class="donor-info">
+                            <img src="https://via.placeholder.com/50x50?text=HW" alt="Henry White">
+                            <div>
+                                <h3>Henry White</h3>
+                                <p>2025-03-01</p>
+                            </div>
+                        </div>
+                        <div class="donation-details">
+                            <h4>Medical Supplies</h4>
+                            <ul>
+                                <li>First Aid Kits - 25 units</li>
+                                <li>Medicines - 100 packages</li>
+                                <li>Medical Equipment - 5 units</li>
+                            </ul>
+                            <div class="donation-status">
+                                <span class="status-delivered">Delivered to Camp Alpha</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="donation-card">
+                        <div class="donor-info">
+                            <img src="https://via.placeholder.com/50x50?text=IG" alt="Ivy Green">
+                            <div>
+                                <h3>Ivy Green</h3>
+                                <p>2025-02-25</p>
+                            </div>
+                        </div>
+                        <div class="donation-details">
+                            <h4>Food</h4>
+                            <ul>
+                                <li>Canned Food - 200 units</li>
+                                <li>Rice - 100 kg</li>
+                                <li>Drinking Water - 300 bottles</li>
+                            </ul>
+                            <div class="donation-status">
+                                <span class="status-delivered">Delivered to Camp Beta</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="donation-card">
+                        <div class="donor-info">
+                            <img src="https://via.placeholder.com/50x50?text=JB" alt="Jack Black">
+                            <div>
+                                <h3>Jack Black</h3>
+                                <p>2025-02-28</p>
+                            </div>
+                        </div>
+                        <div class="donation-details">
+                            <h4>Clothing</h4>
+                            <ul>
+                                <li>Winter Jackets - 50 units</li>
+                                <li>Blankets - 100 units</li>
+                                <li>Children's Clothing - 150 sets</li>
+                            </ul>
+                            <div class="donation-status">
+                                <span class="status-transit">In Transit to Camp Gamma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Donor Modal -->
+    <div class="modal" id="donor-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Donor</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="donor-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="donor-name">Full Name</label>
+                            <input type="text" id="donor-name" name="donor-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donor-contact">Email</label>
+                            <input type="email" id="donor-contact" name="donor-contact" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="donation-type">Donation Type</label>
+                            <select id="donation-type" name="donation-type" required>
+                                <option value="">Select type</option>
+                                <option value="Medical Supplies">Medical Supplies</option>
+                                <option value="Food">Food</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Financial">Financial</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="donation-date">Donation Date</label>
+                            <input type="date" id="donation-date" name="donation-date" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="donation-details">Donation Details</label>
+                        <textarea id="donation-details" name="donation-details" rows="4" placeholder="Enter details about the donation..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-donor">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Donor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

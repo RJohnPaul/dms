@@ -1,0 +1,191 @@
+# Disaster Management System - Database Setup Guide
+
+This document provides instructions on how to set up and connect to the MySQL database for the Disaster Management System application.
+
+## Prerequisites
+
+1. MySQL Server installed on your local machine
+   - Download from: https://dev.mysql.com/downloads/mysql/
+   - For Windows users, MySQL Installer is recommended
+
+2. MySQL Workbench (optional but recommended for database management)
+   - Included in MySQL Installer or download separately
+
+3. Node.js and npm installed (for running the server)
+   - Download from: https://nodejs.org/
+
+## Database Configuration
+
+The application connects to MySQL using the configuration in `server/db.config.js`. The default settings are:
+
+```javascript
+module.exports = {
+    HOST: "localhost",
+    USER: "root",         // Change this to your MySQL username
+    PASSWORD: "",         // Change this to your MySQL password
+    DB: "incident_management",
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
+```
+
+### Modifying Database Connection Settings
+
+1. Open `server/db.config.js` in a text editor
+2. Update the following fields to match your MySQL installation:
+   - `USER`: Your MySQL username (default is "root")
+   - `PASSWORD`: Your MySQL password
+   - `DB`: Database name (default is "incident_management")
+3. Save the file
+
+## Setting Up the Database
+
+### Option 1: Manual Setup
+
+1. Open MySQL Command Line Client or MySQL Workbench
+2. Log in to MySQL server with your credentials
+3. Create the database:
+   ```sql
+   CREATE DATABASE incident_management;
+   USE incident_management;
+   ```
+
+4. Create the required tables:
+
+```sql
+-- Incidents table
+CREATE TABLE incidents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    incident_type VARCHAR(100) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    description TEXT,
+    severity VARCHAR(50) NOT NULL,
+    status VARCHAR(50) DEFAULT 'Active',
+    reported_by VARCHAR(100),
+    contact_info VARCHAR(100),
+    reported_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Relief camps table
+CREATE TABLE relief_camps (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    camp_name VARCHAR(100) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    capacity INT NOT NULL,
+    current_occupancy INT DEFAULT 0,
+    status VARCHAR(50) DEFAULT 'Active',
+    contact_person VARCHAR(100),
+    contact_number VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Donors table
+CREATE TABLE donors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_name VARCHAR(100) NOT NULL,
+    contact_number VARCHAR(20),
+    email VARCHAR(100),
+    donation_type VARCHAR(100) NOT NULL,
+    donation_details TEXT,
+    status VARCHAR(50) DEFAULT 'Pending',
+    donated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Requests table
+CREATE TABLE requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    request_type VARCHAR(100) NOT NULL,
+    requested_by VARCHAR(100) NOT NULL,
+    contact_info VARCHAR(100),
+    location VARCHAR(255) NOT NULL,
+    required_date DATE,
+    details TEXT,
+    status VARCHAR(50) DEFAULT 'Pending',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Activities table (for recent activities)
+CREATE TABLE activities (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    activity_type VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    related_id INT,
+    related_type VARCHAR(50),
+    status VARCHAR(50),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Option 2: Import SQL File (if available)
+
+If you have a SQL dump file for the database:
+
+1. Open MySQL Command Line Client or MySQL Workbench
+2. Create the database:
+   ```sql
+   CREATE DATABASE incident_management;
+   ```
+3. Import the SQL file:
+   - Using command line:
+     ```
+     mysql -u root -p incident_management < path_to_sql_file.sql
+     ```
+   - Using MySQL Workbench:
+     - Navigate to Server > Data Import
+     - Choose "Import from Self-Contained File" and select your SQL file
+     - Select "incident_management" as the target schema
+     - Start the import
+
+## Running the Server
+
+1. Open a terminal/command prompt
+2. Navigate to the server directory:
+   ```
+   cd path_to_project/server
+   ```
+3. Install dependencies (first time only):
+   ```
+   npm install
+   ```
+4. Start the server:
+   ```
+   node server.js
+   ```
+5. You should see a message indicating the server is running, typically on port 3000
+
+## Testing the Database Connection
+
+1. With the server running, open a web browser
+2. Navigate to http://localhost:3000/ (or the port specified in your server configuration)
+3. You should see a welcome message: "Welcome to the Incident Management System API."
+
+## Troubleshooting Common Issues
+
+### Connection Errors
+
+- **Error:** "ER_ACCESS_DENIED_ERROR"
+  - **Solution:** Check if your MySQL username and password are correct in db.config.js
+
+- **Error:** "ER_BAD_DB_ERROR"
+  - **Solution:** Ensure the database "incident_management" exists in your MySQL server
+
+- **Error:** "ECONNREFUSED"
+  - **Solution:** Make sure MySQL server is running on your machine
+
+### Database Schema Issues
+
+- If you see errors about missing tables or columns, ensure you've created all required tables as specified above
+
+## Additional Resources
+
+- MySQL Documentation: https://dev.mysql.com/doc/
+- Node.js MySQL2 Package: https://github.com/sidorares/node-mysql2
+- Express.js Documentation: https://expressjs.com/
