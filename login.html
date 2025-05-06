@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Disaster Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="images/logo.png" alt="Disaster Management Logo" onerror="this.src='https://via.placeholder.com/100x100?text=DMS'">
+                    <h1>Disaster Management System</h1>
+                    <p>Login to access the dashboard</p>
+                </div>
+                <div class="auth-body">
+                    <form id="login-form">
+                        <div id="login-error" class="alert alert-danger" style="display: none;"></div>
+                        
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Login As</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-user-tag"></i>
+                                <select id="role" name="role" required>
+                                    <option value="">Select Role</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="volunteer">Volunteer</option>
+                                    <option value="donor">Donor</option>
+                                    <option value="user">General User</option>
+                                    <option value="driver">Driver</option>
+                                    <option value="beneficiary">Beneficiary</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="register-link">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register New Account</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-fullname">Full Name</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="register-fullname" name="fullname" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user-circle"></i>
+                            <input type="text" id="register-username" name="username" placeholder="Choose a username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-phone">Phone Number</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="register-phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="register-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-role">Register As</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user-tag"></i>
+                            <select id="register-role" name="role" required>
+                                <option value="">Select Role</option>
+                                <option value="volunteer">Volunteer</option>
+                                <option value="donor">Donor</option>
+                                <option value="user">General User</option>
+                                <option value="driver">Driver</option>
+                                <option value="beneficiary">Beneficiary</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="note">
+                            <i class="fas fa-info-circle"></i>
+                            Note: Your account will need to be approved by an administrator before it becomes active.
+                        </p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div class="toast-container"></div>
+
+    <script type="module" src="js/utilities.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
